@@ -8,6 +8,8 @@
 #define DELAY_H
 
 
+#include "types.h"
+
 #define DELAY_2US   (u8)10
 #define DELAY_6US   (u8)32
 #define DELAY_9US   (u8)48
@@ -20,10 +22,11 @@
 #define DELAY_80US  (u16)426
 #define DELAY_100US (u16)534 // or maybe 533
 #define DELAY_410US (u16)2187
+#define DELAY_465US (u16)2187///
 #define DELAY_480US (u16)2560
+#define DELAY_750US 
 
-void delay_ms(u16);
-#define delay_ms(loops) _asm("$N: \n decw X \n jrne $L \n nop", (u16)loops);
+#define DELAY_US(loops) _asm("$N: \n decw X \n jrne $L \n nop", (u16)loops);
 
 
 #endif // DELAY_H

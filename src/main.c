@@ -9,15 +9,6 @@
 // if ds18b20 not found we will blink
 int main(void)
 {
-    if (true)
-    {
-        // if ds18b20 is present
-        // do that user whant
-    }
-    else
-    {
-        // say user about fall
-    }
-
-    return 0;
+   return 0;
+    
 }

@@ -5,24 +5,27 @@
 // TODO: add doc to this file
 
 #include "ds18b20.h"
+#include "stm8s_conf.h"
 
 // TODO:
+void INIT(){
+    OW_CR1 = 1;
+}
+
 u8 RESET_PULSE(void)
 {
-    unsigned int i;
-    OW_LOW();
+    OW_DDR = 1;
+    OW_ODR = 0;
+    
     DELAY_US(DELAY_480US);
-    OW_HIGH();
+    OW_DDR = 0;
     DELAY_US(DELAY_15US);
-    if(OW_READ())
-        i = 1;
-    else
+    u8 i;
+    if(OW_IDR)
         i = 0;
-    DELAY_US(DELAY_480US);
-    if(OW_READ())
-        i = 1;
     else
-        i = 0;
+        i = 1;
+    DELAY_US(DELAY_465US);
 
     return i;
 }
@@ -32,21 +35,19 @@ void WRITE_BYTE(u8 data)
 {
     for(u8 i = 0; i < 8; ++i)
     {
-        if(data & 0x01)
-        {        /* write '1' */
-            OW_LOW();             /* master - drive bus low */
-            DELAY_US(DELAY_6US);  /* master - wait 6us (A-5,6,15) */
-            OW_HIGH();            /* master - release bus */
-            DELAY_US(DELAY_64US); /* master - wait 64us (B-59,64,N/A) */
-        }
-        else
-        {                 /* write '0' */
-            OW_LOW();             /* master - drive bus low */
-            DELAY_US(DELAY_60US); /* master - wait 60us (C-60,60,120) */
-            OW_HIGH();            /* master - release bus */
-            DELAY_US(DELAY_10US); /* master - wait 10us (D-8,10,N/A) */
-        }
-        data >>= 1;
+      OW_DDR = 1;
+      OW_ODR = 0;
+        
+      asm ("nop");
+      if(data & 0x01)
+      {        
+         OW_DDR = 0;
+      }
+      DELAY_US(DELAY_60US);
+      OW_DDR = 0;
+      data >>= 1;
+      
+      asm ("nop");
     }
 }
 
@@ -57,17 +58,52 @@ u8 READ_BYTE(void)
 
   for(u8 i = 0; i < 8; ++i)
   {
-      result >>= 1;
-      OW_LOW();             /* master - drive bus low */
-      DELAY_US(DELAY_6US);  /* master - wait 6us (A-5,6,15) */
-      OW_HIGH();            /* master - release bus */
-      DELAY_US(DELAY_9US);  /* master - wait 9us (E-5,9,12) */
-      if(OW_READ())
-          result |= 0x80;
-      DELAY_US(DELAY_55US); /* master - wait 55us (F-50,55,N/A) */
+    OW_DDR = 1;
+    OW_ODR = 0;
+    
+    asm("nop");
+    
+    OW_DDR = 0;
+    DELAY_US(DELAY_10US);
+    asm("nop");
+    asm("nop");
+    asm("nop");
+    asm("nop");
+    asm("nop");
+    
+    if (OW_IDR){
+      result |= 1 << i;
+    }
+    asm("nop");
+    asm("nop");
+      
   }
 
   return (result);
+}
+
+double READ_TEMPERATURE(){
+    u8 data[2];
+    int r = 0;
+    if (RESET_PULSE()){
+      WRITE_BYTE(SKIP_ROM);
+      WRITE_BYTE(CONVERT_T);
+      DELAY_US(DELAY_480US);
+      DELAY_US(DELAY_70US);
+      DELAY_US(DELAY_100US);
+      DELAY_US(DELAY_100US);
+      
+      
+      RESET_PULSE();
+      WRITE_BYTE(SKIP_ROM);
+      WRITE_BYTE(READ_SCRATCHPAD);
+      data[0] = READ_BYTE();
+      data[1] = READ_BYTE();
+      r = data[1];
+      r = r << 8;
+      r |= data[0];
+    }
+    return r*0.0625;
 }
 
 // TODO:

@@ -1,4 +1,4 @@
-// Copyright (c) 2016 bagXi. Contacts: <bagelwithraisins@gmail.com>
+// Copyright (c) 2016 bagXi. Contacts: <imcodelike@gmail.com>
 // License: https://www.gnu.org/licenses/gpl-2.0
 
 
@@ -22,9 +22,9 @@
 #define DELAY_80US  (u16)426
 #define DELAY_100US (u16)534 // or maybe 533
 #define DELAY_410US (u16)2187
-#define DELAY_465US (u16)2187///
+#define DELAY_465US (u16)2187// TODO:
 #define DELAY_480US (u16)2560
-#define DELAY_750US 
+#define DELAY_750US (u16)2560// TODO:
 
 #define DELAY_US(loops) _asm("$N: \n decw X \n jrne $L \n nop", (u16)loops);
 

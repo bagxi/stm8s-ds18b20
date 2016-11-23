@@ -8,8 +8,8 @@
 #define KERNEL_LIKE_TYPES_H
 
 
-#define s8 signed char
-#define u8 unsigned char
+#define s8  signed char
+#define u8  unsigned char
 
 #define s16 signed short
 #define u16 unsigned short

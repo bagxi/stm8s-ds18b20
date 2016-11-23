@@ -1,11 +1,12 @@
-// Copyright (c) 2016 bagXi. Contacts: <bagelwithraisins@gmail.com>
+// Copyright (c) 2016 bagXi. Contacts: <imcodelike@gmail.com>
 // License: https://www.gnu.org/licenses/gpl-2.0
 
 
-// TODO: add doc to this file
+// Defines of ports and pins of STM8S which well be used by DS18B20
 
 #ifndef STM8S_CONF_H
 #define STM8S_CONF_H
+
 
 #include "iostm8s105s6.h"
 
@@ -15,9 +16,6 @@
 #define OW_IDR PD_IDR_bit.IDR2
 
 #define OW_MASK 0x01
-
-
-
 
 
 #endif // STM8S_CONF_H

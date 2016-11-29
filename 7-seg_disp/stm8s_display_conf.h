@@ -2,13 +2,14 @@
 // License: https://www.gnu.org/licenses/gpl-2.0
 
 
-#ifndef STM8S_CONF_H
-#define STM8S_CONF_H
+// Define of pins for 4-digit 7-segment display
+
+#ifndef STM8S_DISPLAY_CONF_H
+#define STM8S_DISPLAY_CONF_H
 
 
 #include "iostm8s105s6.h"
 
-// for 3641BS(4-digit 7-segment display)
 #define PIN_1  PA_ODR_bit.ODR3
 #define PIN_2  PA_ODR_bit.ODR4
 #define PIN_3  PA_ODR_bit.ODR5
@@ -22,5 +23,7 @@
 #define PIN_11 PB_ODR_bit.ODR1
 #define PIN_12 PB_ODR_bit.ODR0
 
+void init_display(void);
 
-#endif // STM8S_CONF_H
+
+#endif // STM8S_DISPLAY_CONF_H

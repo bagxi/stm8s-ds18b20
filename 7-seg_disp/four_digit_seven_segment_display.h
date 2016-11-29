@@ -2,7 +2,7 @@
 // License: https://www.gnu.org/licenses/gpl-2.0
 
 
-// TODO: place for doc
+// Commands for 4-digit 7-segment display
 
 #ifndef FOUR_DIGIT_SEVEN_SEGMENT_DISPLAY_H
 #define FOUR_DIGIT_SEVEN_SEGMENT_DISPLAY_H
@@ -10,27 +10,30 @@
 
 #include "kernel_like_types.h"
 
-void print_number(float number);// TODO:
+void print_number(float number);
 
-// commands for 'printing' digit for each segment
-void first_digit(u8 digit, u8 floatingPoint);
-void second_digit(u8 digit, u8 floatingPoint);
-void third_digit(u8 digit, u8 floatingPoint);
-void fourth_digit(u8 digit, u8 floatingPoint);
+void first_segment_on(void);
+void first_segment_off(void);
+void second_segment_on(void);
+void second_segment_off(void);
+void third_segment_on(void);
+void third_segment_off(void);
+void fourth_segment_on(void);
+void fourth_segment_off(void);
 
-// commands for 'printing' digit on one segment
-void print_digit(u8 digit, u8 floatingPoint);
-void one();
-void two();
-void three();
-void four();
-void five();
-void six();
-void seven();
-void eight();
-void nine();
-void zero();
-void nil();
+void print_digit(u8 digit);
+
+void one(void);
+void two(void);
+void three(void);
+void four(void);
+void five(void);
+void six(void);
+void seven(void);
+void eight(void);
+void nine(void);
+void zero(void);
+void none(void);
 
 
 #endif // FOUR_DIGIT_SEVEN_SEGMENT_DISPLAY_H

@@ -2,10 +2,10 @@
 // License: https://www.gnu.org/licenses/gpl-2.0
 
 
-// Defines of Linux-like kernel types for variables.
+// Linux kernel data types
 
-#ifndef KERNEL_LIKE_TYPES_H
-#define KERNEL_LIKE_TYPES_H
+#ifndef KERNEL_DATA_TYPES_H
+#define KERNEL_DATA_TYPES_H
 
 
 #define s8  signed char
@@ -21,4 +21,4 @@
 #define u64 unsigned long long
 
 
-#endif // KERNEL_LIKE_TYPES_H
+#endif // KERNEL_DATA_TYPES_H

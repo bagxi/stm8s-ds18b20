@@ -10,7 +10,7 @@
 
 #include "delay.h"
 #include "ds18b20.h"
-#include "kernelLikeTypes.h"
+#include "kernel_data_types.h"
 #include "stm8s_conf.h"
 
 u8 read_byte(void);

@@ -2,13 +2,13 @@
 // License: https://www.gnu.org/licenses/gpl-2.0
 
 
-// Defines of ROM Function Command and Memory Function Command for DS18B20
+// ROM and Memory Function Commands of DS18B20 digital thermometer
 
 #ifndef DS18B20_H
 #define DS18B20_H
 
 
-#include "kernelLikeTypes.h"
+#include "kernel_data_types.h"
 
 // ROM function commands
 #define READ_ROM          (u8)0x33

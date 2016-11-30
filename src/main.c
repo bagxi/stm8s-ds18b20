@@ -4,7 +4,7 @@
 
 #include "stm8s_conf.h"
 #include "ds18b20.h"
-#include "oneWire.h"
+#include "one_wire.h"
 
 int main(void)
 {

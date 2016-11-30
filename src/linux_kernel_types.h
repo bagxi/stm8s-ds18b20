@@ -4,8 +4,8 @@
 
 // Linux kernel data types
 
-#ifndef KERNEL_DATA_TYPES_H
-#define KERNEL_DATA_TYPES_H
+#ifndef LINUX_KERNEL_TYPES_H
+#define LINUX_KERNEL_TYPES_H
 
 
 #define s8  signed char
@@ -21,4 +21,4 @@
 #define u64 unsigned long long
 
 
-#endif // KERNEL_DATA_TYPES_H
+#endif // LINUX_KERNEL_TYPES_H

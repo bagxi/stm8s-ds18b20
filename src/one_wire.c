@@ -26,10 +26,10 @@ float read_temperature(void)
 }
 
 
-// Read one byte from device
+// Read one byte command
 u8 read_byte(void)
 {
-    u8 result = 0;
+    u8 byte = 0;
 
     for(u8 i = 0; i < 8; ++i)
     {
@@ -37,9 +37,8 @@ u8 read_byte(void)
         OW_ODR = 0;
 
         asm("nop");
-
         OW_DDR = 0;
-        DELAY_US(DELAY_10US);
+        delay_us(1);
         asm("nop");
         asm("nop");
         asm("nop");
@@ -47,15 +46,16 @@ u8 read_byte(void)
         asm("nop");
 
         if (OW_IDR)
-            result |= 1 << i;
+            byte |= 1 << i;
 
         asm("nop");
         asm("nop");
     }
 
-    return (result);
+    return byte;
 }
 
+// TODO:
 // Read id of connected device
 /*u8 read_id(u8 *rom_id)
 {
@@ -68,27 +68,22 @@ u8 read_byte(void)
     return 1;
 }*/
 
-// Read DS18B20's temperature
+// Read temperature from DS18B20
 u16 read_t(void)
 {
     u16 temperature = 0;
-
-    u8 byte[2];
     if (reset_pulse())
     {
         // DS18B20 begin temperature conversion
         write_byte(SKIP_ROM);
         write_byte(CONVERT_T);
-        // TODO: make as 'Delay(750us)'
-        DELAY_US(DELAY_480US);
-        DELAY_US(DELAY_70US);
-        DELAY_US(DELAY_100US);
-        DELAY_US(DELAY_100US);
+        delay_us(75);
 
         // Receive temperature data from device
         reset_pulse();
         write_byte(SKIP_ROM);
         write_byte(READ_SCRATCHPAD);
+        u8 byte[2];
         byte[0] = read_byte();
         byte[1] = read_byte();
         temperature = byte[1];
@@ -99,38 +94,37 @@ u16 read_t(void)
     return temperature;
 }
 
-// Initialization of DS18B20
 // Verify that at least one device is present
 u8 reset_pulse(void)
 {
     OW_DDR = 1;
     OW_ODR = 0;
+    delay_us(48);
 
-    DELAY_US(DELAY_480US);
     OW_DDR = 0;
-    DELAY_US(DELAY_15US);
-    u8 i;
+    delay_us(6);
+    u8 present;
     if(OW_IDR)
-        i = 0;
+        present = 0;
     else
-        i = 1;
-    DELAY_US(DELAY_465US);
+        present = 1;
+    delay_us(41);
 
-    return i;
+    return present;
 }
 
-// Write one-byte command to device
+// Write one-byte command
 void write_byte(u8 byte)
 {
     for(u8 i = 0; i < 8; ++i)
     {
         OW_DDR = 1;
         OW_ODR = 0;
-
         asm ("nop");
         if(data & 0x01)
             OW_DDR = 0;
-        DELAY_US(DELAY_60US);
+        delay_us(6);
+
         OW_DDR = 0;
         byte >>= 1;
 

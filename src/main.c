@@ -2,7 +2,7 @@
 // License: https://www.gnu.org/licenses/gpl-2.0
 
 
-#include "stm8s_conf.h"
+#include "stm8s_ds18b20_conf.h"
 #include "ds18b20.h"
 #include "one_wire.h"
 

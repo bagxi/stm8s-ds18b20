@@ -10,8 +10,8 @@
 
 #include "delay.h"
 #include "ds18b20.h"
-#include "kernel_data_types.h"
-#include "stm8s_conf.h"
+#include "linux_kernel_types.h"
+#include "stm8s_ds18b20_conf.h"
 
 u8 read_byte(void);
 //u8 read_id(u8 *rom_id);// TODO: implement this method in next versions

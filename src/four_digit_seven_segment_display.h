@@ -15,23 +15,37 @@
 // along with this program; if not, see <https://www.gnu.org/licenses/gpl-2.0>
 
 
-#ifndef ONE_WIRE_H
-#define ONE_WIRE_H
+#ifndef FOUR_DIGIT_SEVEN_SEGMENT_DISPLAY_H
+#define FOUR_DIGIT_SEVEN_SEGMENT_DISPLAY_H
 
 
-#include "delay.h"
-#include "ds18b20.h"
-#include "linux_kernel_types.h"
-#include "stm8s_thermometer_conf.h"
+#include "kernel_like_types.h"
+#include "stm8s_display_conf.h"
 
-u8 read_byte(void);
-//u8 read_id(u8 *rom_id);// TODO: implement this method in next versions
-u16 read_t(void);
-u8 reset_pulse(void);
-void write_byte(u8 byte);
+void print_number(float number);
 
-void init(void);// TODO: move to another file
-float read_temperature(void);// TODO: move to another file
+void first_segment_on(void);
+void first_segment_off(void);
+void second_segment_on(void);
+void second_segment_off(void);
+void third_segment_on(void);
+void third_segment_off(void);
+void fourth_segment_on(void);
+void fourth_segment_off(void);
+
+void print_digit(u8 digit);
+
+void one(void);
+void two(void);
+void three(void);
+void four(void);
+void five(void);
+void six(void);
+void seven(void);
+void eight(void);
+void nine(void);
+void zero(void);
+void none(void);
 
 
-#endif // ONE_WIRE_H
+#endif // FOUR_DIGIT_SEVEN_SEGMENT_DISPLAY_H

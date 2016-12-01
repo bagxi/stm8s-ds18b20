@@ -1,4 +1,4 @@
-// Copyright (c) 2016 bagXi. All rights reserved.
+// Copyright (c) 2016 bagxi. All rights reserved.
 //
 // Licensed under the GNU General Public License, Version 2.0
 //
@@ -14,8 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, see <https://www.gnu.org/licenses/gpl-2.0>
 
-
-// ROM and Memory Function Commands of DS18B20 digital thermometer
 
 #ifndef DS18B20_H
 #define DS18B20_H

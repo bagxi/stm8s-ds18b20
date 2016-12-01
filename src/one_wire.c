@@ -1,4 +1,4 @@
-// Copyright (c) 2016 bagXi. All rights reserved.
+// Copyright (c) 2016 bagxi. All rights reserved.
 //
 // Licensed under the GNU General Public License, Version 2.0
 //

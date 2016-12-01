@@ -1,4 +1,4 @@
-// Copyright (c) 2016 bagXi. All rights reserved.
+// Copyright (c) 2016 bagxi. All rights reserved.
 //
 // Licensed under the GNU General Public License, Version 2.0
 //
@@ -15,9 +15,10 @@
 // along with this program; if not, see <https://www.gnu.org/licenses/gpl-2.0>
 
 
-#include "stm8s_ds18b20_conf.h"
-#include "ds18b20.h"
+#include "four_digit_seven_segment_display.h"
 #include "one_wire.h"
+#include "stm8s_display_conf.h"
+#include "stm8s_thermometer_conf.h"
 
 int main(void)
 {

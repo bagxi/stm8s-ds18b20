@@ -15,23 +15,26 @@
 // along with this program; if not, see <https://www.gnu.org/licenses/gpl-2.0>
 
 
-#ifndef ONE_WIRE_H
-#define ONE_WIRE_H
+#ifndef STM8S_DISPLAY_CONF_H
+#define STM8S_DISPLAY_CONF_H
 
 
-#include "delay.h"
-#include "ds18b20.h"
-#include "linux_kernel_types.h"
-#include "stm8s_thermometer_conf.h"
+#include "iostm8s105s6.h"
 
-u8 read_byte(void);
-//u8 read_id(u8 *rom_id);// TODO: implement this method in next versions
-u16 read_t(void);
-u8 reset_pulse(void);
-void write_byte(u8 byte);
+#define PIN_1  PA_ODR_bit.ODR3
+#define PIN_2  PA_ODR_bit.ODR4
+#define PIN_3  PA_ODR_bit.ODR5
+#define PIN_4  PA_ODR_bit.ODR6
+#define PIN_5  PB_ODR_bit.ODR7
+#define PIN_6  PB_ODR_bit.ODR6
+#define PIN_7  PB_ODR_bit.ODR5
+#define PIN_8  PB_ODR_bit.ODR4
+#define PIN_9  PB_ODR_bit.ODR3
+#define PIN_10 PB_ODR_bit.ODR2
+#define PIN_11 PB_ODR_bit.ODR1
+#define PIN_12 PB_ODR_bit.ODR0
 
-void init(void);// TODO: move to another file
-float read_temperature(void);// TODO: move to another file
+void init_display(void);
 
 
-#endif // ONE_WIRE_H
+#endif // STM8S_DISPLAY_CONF_H

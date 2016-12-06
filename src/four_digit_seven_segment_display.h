@@ -19,7 +19,7 @@
 #define FOUR_DIGIT_SEVEN_SEGMENT_DISPLAY_H
 
 
-#include "kernel_like_types.h"
+#include "linux_kernel_types.h"
 #include "stm8s_display_conf.h"
 
 void print_number(float number);

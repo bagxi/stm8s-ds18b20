@@ -15,6 +15,7 @@
 // along with this program; if not, see <https://www.gnu.org/licenses/gpl-2.0>
 
 
+#include "delay.h"
 #include "four_digit_seven_segment_display.h"
 
 // TODO: add 'floatingPoint()'
@@ -30,20 +31,24 @@ void print_number(float number)
     }
 
     // print digits
+    print_digit((u8) digit[0]);
     first_segment_on();
-    print_digit((u8) );
+    delay_us(1);// TODO:
     first_segment_off();
 
+    print_digit((u8) digit[1]);
     second_segment_on();
-    print_digit((u8) );
+    delay_us(1);// TODO:
     second_segment_off();
 
+    print_digit((u8) digit[2]);
     third_segment_on();
-    print_digit((u8) );
+    delay_us(1);// TODO:
     third_segment_off();
 
+    print_digit((u8) digit[3]);
     fourth_segment_on();
-    print_digit((u8) );
+    delay_us(1);// TODO:
     fourth_segment_off();
 }
 

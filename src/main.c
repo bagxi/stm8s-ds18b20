@@ -22,5 +22,14 @@
 
 int main(void)
 {
-   return 0;
+    init_display();
+    init();
+
+    while(1)
+    {
+        float temp = read_t();
+        print_number(temp);
+    }
+
+    return 0;
 }

@@ -25,13 +25,14 @@
 #include "stm8s_thermometer_conf.h"
 
 u8 read_byte(void);
+u8 w1_readbyte();// TODO:
 //u8 read_id(u8 *rom_id);// TODO: implement this method in next versions
-u16 read_t(void);
+float read_t(void);
 u8 reset_pulse(void);
 void write_byte(u8 byte);
 
 void init(void);// TODO: move to another file
-float read_temperature(void);// TODO: move to another file
+//float read_temperature(void);// TODO: move to another file
 
 
 #endif // ONE_WIRE_H
